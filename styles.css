@@ -1,0 +1,1071 @@
+/* Reset & Base Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    /* Critical: Prevent horizontal scroll globally */
+    width: 100%;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #F8F9FB;
+    /* Light grayish background similar to FixFair */
+    color: #1F2937;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    background: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Typography & Utilities */
+h1,
+h2,
+h3 {
+    font-weight: 600;
+    color: #111827;
+}
+
+.text-gray {
+    color: #6B7280;
+    font-size: 0.95rem;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-outline,
+.btn-primary-sm,
+.btn-primary-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    /* Slightly rounded like FixFair */
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #2563EB;
+    /* Bright Blue */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1D4ED8;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: white;
+    color: #374151;
+    border: 1px solid #D1D5DB;
+}
+
+.btn-secondary:hover {
+    background-color: #F3F4F6;
+}
+
+.btn-outline {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    color: #374151;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    /* Pill shape or rounded rect */
+    font-size: 0.85rem;
+}
+
+.btn-outline:hover {
+    border-color: #2563EB;
+    color: #2563EB;
+}
+
+.btn-primary-sm {
+    background-color: #2563EB;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.btn-primary-outline {
+    border: 1px solid #2563EB;
+    color: #2563EB;
+    background: transparent;
+    border-radius: 4px;
+    /* Matches layout button usually */
+    margin-top: 20px;
+}
+
+.btn-primary-outline:hover {
+    background-color: #EFF6FF;
+}
+
+.stars-sm,
+.stars-xs {
+    color: #FBBF24;
+    /* Amber 400 */
+    letter-spacing: -2px;
+}
+
+.stars-xs {
+    font-size: 0.8em;
+}
+
+/* Header */
+.site-header {
+    background-color: white;
+    border-bottom: 1px solid #E5E7EB;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #111827;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo-img {
+    height: 87px;
+    /* Desktop height constraint */
+    width: auto;
+}
+
+.desktop-nav {
+    display: none;
+    gap: 24px;
+}
+
+.desktop-nav a {
+    color: #4B5563;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.desktop-nav a.active,
+.desktop-nav a:hover {
+    color: #2563EB;
+}
+
+.header-actions {
+    display: none;
+}
+
+.mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+}
+
+.mobile-menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background-color: #374151;
+    border-radius: 2px;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid #E5E7EB;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transform: translateY(-150%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 99;
+}
+
+.mobile-menu.open {
+    transform: translateY(0);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.hero-content .highlight {
+    color: #2563EB;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #4B5563;
+    max-width: 600px;
+    margin: 0 auto 32px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.hero-tags {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #DBEAFE;
+    color: #1E40AF;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Reviews Dashboard Section */
+.reviews-section {
+    padding: 40px 0;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.dashboard-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    /* Matches card style */
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-label {
+    color: #6B7280;
+    font-size: 0.9rem;
+}
+
+.stat-trend {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.stat-trend.positive {
+    color: #10B981;
+    /* Green */
+}
+
+.stat-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 8px;
+    align-self: flex-start;
+}
+
+.stat-badge.success {
+    background-color: #ECFDF5;
+    color: #059669;
+}
+
+/* Main Content Grid */
+.reviews-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+.breakdown-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    /* Often FixFair style is just clean, maybe light border */
+    border: 1px solid #E5E7EB;
+    /* No shadow or subtle */
+    /* If screenshot has shadow, add it */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    /* Very subtle */
+}
+
+.card h3 {
+    font-size: 1rem;
+    margin-bottom: 16px;
+}
+
+/* Rating Bar */
+.rating-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+}
+
+.star-label {
+    min-width: 30px;
+    color: #374151;
+    font-weight: 500;
+}
+
+.progress-bg {
+    flex: 1;
+    height: 8px;
+    background-color: #F3F4F6;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #2563EB;
+    /* Bright Blue */
+    border-radius: 100px;
+}
+
+.count-label {
+    min-width: 20px;
+    text-align: right;
+    color: #6B7280;
+}
+
+/* Category Ratings */
+.category-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #F3F4F6;
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.category-row:last-child {
+    border-bottom: none;
+}
+
+.cat-score {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+/* Reviews List */
+.reviews-list-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.reviews-tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 1px;
+    overflow-x: auto;
+}
+
+.tab {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    color: #6B7280;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.tab.active {
+    color: #111827;
+    border-bottom-color: #111827;
+    /* Dark underline for active tab */
+}
+
+/* Review Card */
+.review-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.2s;
+}
+
+.review-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    /* Squared rounded for FixFair */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #4B5563;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.reviewer-name {
+    font-weight: 600;
+    color: #111827;
+    font-size: 0.95rem;
+}
+
+.review-meta {
+    font-size: 0.8rem;
+    color: #9CA3AF;
+}
+
+.review-badge {
+    background-color: #F3F4F6;
+    color: #4B5563;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    margin-left: auto;
+    /* Push to right on desktop */
+    margin-right: 12px;
+}
+
+.mobile-rating {
+    display: block;
+    /* Show on mobile naturally */
+}
+
+.review-body {
+    font-size: 0.95rem;
+    color: #4B5563;
+    line-height: 1.6;
+}
+
+.review-aspects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    background: #FAFAFA;
+    /* Very light background for aspects box */
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.aspect {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #374151;
+}
+
+.review-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #6B7280;
+    margin-top: 8px;
+}
+
+.response-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #2563EB;
+    /* Use link color if not button */
+    font-weight: 500;
+}
+
+.show-more-container {
+    text-align: center;
+    margin-top: 16px;
+}
+
+/* Footer */
+.site-footer {
+    border-top: 1px solid #E5E7EB;
+    padding: 32px 0;
+    margin-top: 60px;
+    text-align: center;
+    color: #6B7280;
+    font-size: 0.9rem;
+}
+
+/* MOBILE FIXES (Applied max-width: 768px for mobile scope) */
+@media (max-width: 768px) {
+
+    /* 1. Logo Size Increase & Centering */
+    .header-logo-img {
+        height: auto;
+        width: 80px;
+        /* Increased size for mobile */
+        max-width: 180px;
+        margin-top: 10px;
+    }
+
+    /* Ensure header layout accommodates slightly bigger logo without breaking */
+    .header-inner {
+        padding: 0 12px;
+    }
+
+    /* 3. Hero Section Improvements */
+    .hero-section {
+        min-height: 70vh;
+        /* Increase height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* Vertical Center */
+        align-items: center;
+        /* Horizontal Center */
+        padding: 80px 16px;
+        /* Spacing */
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+        /* Readable styling */
+        margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        /* Stack buttons on very small screens if needed, usually row is fine but stacking ensures easy touch */
+        width: 100%;
+        max-width: 320px;
+        gap: 16px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        /* Full width buttons for easier touch */
+    }
+
+    /* 2 & 4. Reviews Section Center & Alignment */
+    .reviews-section {
+        padding: 60px 0;
+        /* Increased vertical spacing */
+        text-align: center;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .dashboard-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .dashboard-actions {
+        margin-top: 12px;
+        justify-content: center;
+        width: 100%;
+        gap: 16px;
+    }
+
+    .stats-grid {
+        gap: 24px;
+        /* More spacing between stats */
+    }
+
+    .stat-card {
+        align-items: center;
+        /* Center content of stat cards */
+        text-align: center;
+        padding: 32px 20px;
+    }
+
+    .stat-badge {
+        align-self: center;
+        /* Center badge */
+    }
+
+    .stat-value {
+        justify-content: center;
+        /* Center value/stars */
+        font-size: 2.2rem;
+    }
+
+    /* Rating Breakdown centered */
+    .breakdown-column {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    .breakdown-card {
+        padding: 20px 12px;
+        /* Maximize space on 320px */
+    }
+
+    .rating-bar-row {
+        gap: 8px;
+        width: 100%;
+    }
+
+    .rating-bar-row .star-label,
+    .rating-bar-row .count-label {
+        font-size: 0.85rem;
+    }
+
+    .category-row {
+        /* Keep these somewhat spaced but could center */
+    }
+
+    /* Review Cards centering */
+    .review-card {
+        text-align: center;
+        padding: 32px 20px;
+    }
+
+    .review-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .reviewer-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+
+    .avatar {
+        width: 56px;
+        /* Larger avatar for mobile */
+        height: 56px;
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+
+    .review-badge {
+        margin: 8px 0;
+        /* Reset auto margin */
+        padding: 6px 14px;
+        font-size: 0.85rem;
+    }
+
+    .mobile-rating {
+        margin-top: 8px;
+    }
+
+    .review-body {
+        font-size: 1rem;
+        /* Larger font size */
+        line-height: 1.7;
+    }
+
+    .review-aspects {
+        grid-template-columns: 1fr;
+        /* Stack aspects */
+        gap: 12px;
+        max-width: 300px;
+        /* Constrain width for clean look */
+        margin: 0 auto;
+        /* Center block */
+    }
+
+    .review-footer {
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 20px;
+    }
+
+    .response-link {
+        justify-content: center;
+    }
+
+    .show-more-container {
+        margin-top: 32px;
+    }
+
+    .btn-primary-outline {
+        padding: 14px 28px;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+/* Responsive Breakpoints - Desktop Overrides (Safety Ensure Desktop Unchanged) */
+@media (min-width: 768px) {
+    .header-inner {
+        height: 72px;
+    }
+
+    .desktop-nav {
+        display: flex;
+    }
+
+    .header-actions {
+        display: block;
+    }
+
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .reviews-content-grid {
+        grid-template-columns: 300px 1fr;
+        /* Sidebar width + Content */
+        align-items: start;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .reviews-content-grid {
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    padding: 40px 100px;
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-logo {
+    padding: 35px 20px;
+    padding-top: 20px;
+    margin-right: 40px;
+}
+
+.footer-logo img {
+    width: 100px;
+    height: auto;
+}
+
+.footer-cont {
+    width: 100%;
+    display: flex;
+    color: white;
+    font-size: 26px;
+    gap: 80px;
+    padding-bottom: 35px;
+    border-bottom: 2px solid gray;
+    position: relative;
+}
+
+.foot-cont-one {
+    display: flex;
+    gap: 80px;
+}
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    padding-top: 35px;
+    border-top: 2px solid gray;
+
+    color: rgb(168, 167, 167);
+}
+
+footer svg {
+    fill: rgba(255, 255, 255, 0.842);
+    stroke-miterlimit: 10;
+    stroke-width: 1px;
+    width: 40px;
+}
+
+.city {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+}
+
+.cont-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.cont-col:first-child {
+    color: rgb(168, 167, 167);
+}
+
+.cont-col:first-child a:first-child {
+    color: white;
+}
+
+.foot-cont-two {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.foot-cont-two div {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
+
+.foot-cont-three {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+.foot-cont-three p:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.foot-cont-three p {
+    position: relative;
+    padding-right: 16px;
+}
+
+.foot-cont-three p::after {
+    content: "▼";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+}
+
+.foot-cont-three p.active::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.foot-cont-three a {
+    display: none;
+}
+
+.social {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    border-bottom: 2px solid gray;
+}
+
+@media (max-width: 768px) and (min-width: 320px) {
+    footer {
+        align-items: center;
+        padding: 40px 40px;
+    }
+
+    .hero-content {
+        margin-top: 50px;
+    }
+
+    .warn {
+        font-size: 10px !important;
+    }
+
+    .footer-logo {
+        margin-right: 0;
+    }
+
+    /* .social {
+        gap: 0;
+    } */
+
+    .footer-logo img {
+        object-fit: cover;
+        width: 90px;
+    }
+
+    .footer-cont {
+        font-size: 18px;
+        flex-direction: column;
+    }
+
+    .foot-cont-two {
+        padding-top: 35px;
+        border-top: 2px solid gray;
+    }
+
+    .foot-cont-three {
+        flex-direction: column;
+    }
+
+    .featured-title {
+        font-size: 1.25rem;
+    }
+
+    .featured-desc {
+        font-size: 0.9rem;
+    }
+
+    .featured-btns {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .featured-btns a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 20px;
+    }
+}
